@@ -1,0 +1,34 @@
+{
+  "name": "blogpostapplication",
+  "version": "1.0.0",
+  "description": "Blog post website developed with NODE.js, Express, and JS",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krooksoma/BlogPostWebsite.git"
+  },
+  "keywords": [
+    "blog",
+    "post",
+    "website",
+    "node",
+    "express"
+  ],
+  "author": "Romulo DeFaria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krooksoma/BlogPostWebsite/issues"
+  },
+  "homepage": "https://github.com/krooksoma/BlogPostWebsite#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "envdot": "^0.0.3",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.5"
+  }
+}
