@@ -1,0 +1,30 @@
+When user opens the website the first thing they should see is the home page with posts
+
+<navbar> Home, Dashboard, Login, Logout </navbar>
+
+<body> Displaying all posts with clickable links on them. User who created the post is displayed as well </body>
+
+-------------------Homepage functionality------------------------
+
+if user clicks on a post they can make comments if they are logged in, otherwise takes them to login/signup page.
+
+There is a single form that displays the current post above it.
+
+
+-------------------Nav bar buttons -----------------------------
+
+<home> returns to homepage </home>
+
+<dashboard> display current user posts if logged in, otherwise take them to login page </dashboard>
+
+<login> takes user to login page, It displays login and sign up forms </login>
+
+<logout> logs user out if user logged in, otherwise takes them to login page </logout>
+
+--------------------user dashboard---------------------------------
+
+if there are posts made by the user already he is able to select them to view comments, or update the post, or delete them
+
+<New Post Button> user is taken to a page that displays a form that takes a title and a body </New Post Button>
+
+<logout> user logs out and is taken to main page </logout>

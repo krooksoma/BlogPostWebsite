@@ -1,68 +1,45 @@
 const router = require('express').Router();
-const { Post, Comment, User } = require('../../models')
+const { is } = require('sequelize/types/lib/operators');
+const { Post, Comment, User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) =>{
+router.post('/', withAuth, async (req, res) =>{
     try{
-        const getAllPost = await Post.findAll({
-            include: [
-                {
-                    model: Comment
-                }
-            ]
+        const newPost = await Post.create({
+            ...req.body,
+            user_id: req.session.user_id,
         })
-        res.status(200).json(getAllPost);
+
+        res.status(200).json(newPost);
     }catch(error){
         res.status(500).json(error)
     }
-})
+});
 
-router.get('/:id', async (req, res) => {
+router.update('/', withAuth, async (req, res) =>{
     try{
-        const getById = await Post.findByPk(req.params.id);
-
-        res.status(200).json(getById);
+        const updatePost = await Post.
     }catch(error){
         res.status(500).json(error);
     }
 })
 
-router.post('/', async (req,res) => {
+router.delete('/:id', withAuth, async (req, res) =>{
     try{
-        const post = await Post.Create({
-            include: [
-                {
-                    model: User
-                }
-            ]
-        })
-        res.status(201).json(post);
-    }catch(error){
-        res.status(500).json(error)
-    }
-})
-
-router.put('/:id', async (req, res) => {
-    try{
-        const updatePost = await Post.update((req.body), {
+        const postData = await Post.destroy({
             where: {
-                id: req.params.id
+                id: req.params.id, 
+                user_id: req.session.user_id,
             }
-        })
-        res.status(202).json(updatePost);
+        });
+
+        is(!postData) {
+            res.status(404).json({message: `No post found with this id!!`})
+            return;
+        }
+
     }catch(error){
         res.status(500).json(error);
     }
 })
-
-router.delete('/:id', async (req, res) =>{
-    try{
-        const deletePost = await Post.destroy(req.body.id)
-
-        res.status(204).json(deletePost);
-    }catch(error){
-        res.status(500).json(error);
-    }
-    
-})
-
 module.exports = router;
