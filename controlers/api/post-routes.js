@@ -3,6 +3,8 @@ const { is } = require('sequelize/types/lib/operators');
 const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+
+// option to create a new post
 router.post('/', withAuth, async (req, res) =>{
     try{
         const newPost = await Post.create({
@@ -16,6 +18,7 @@ router.post('/', withAuth, async (req, res) =>{
     }
 });
 
+// need to finish implementing update option for post
 router.update('/', withAuth, async (req, res) =>{
     try{
         const updatePost = await Post.
@@ -24,6 +27,7 @@ router.update('/', withAuth, async (req, res) =>{
     }
 })
 
+// option to delete a post by its id
 router.delete('/:id', withAuth, async (req, res) =>{
     try{
         const postData = await Post.destroy({
