@@ -22,8 +22,8 @@ router.get('/', withAuth, async (req, res) => {
         res.status(500).json(error)
     }
 })
-
-router.post('./', withAuth, (req, res) =>{
+// finish implementing post route
+router.post('./', withAuth, async (req, res) =>{
     try{
         const newPost = await Post.create(req.body);
 
@@ -35,5 +35,6 @@ router.post('./', withAuth, (req, res) =>{
     }
 })
 
+// start implementing delete route
 
 module.exports = router;
