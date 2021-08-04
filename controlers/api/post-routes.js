@@ -1,7 +1,25 @@
 const router = require('express').Router();
-const { is } = require('sequelize/types/lib/operators');
 const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/:id', async (req, res) =>{
+    try{
+        const findPost = await Post.findByPk((req.params.id), {
+            // include: [
+            //     {
+            //         model: Comment,
+            //         attributes:['body']
+            //     }
+            // ]
+        })
+        console.log("Find post by id query: ", findPost)
+        res.render('post', {
+            findPost            
+        });
+    }catch(error){
+        res.status(500).json(error);
+    }
+})
 
 
 // option to create a new post
@@ -19,12 +37,12 @@ router.post('/', withAuth, async (req, res) =>{
 });
 
 // need to finish implementing update option for post
-router.update('/', withAuth, async (req, res) =>{
-    try{
-        const updatePost = await Post.
-    }catch(error){
-        res.status(500).json(error);
-    }
+router.put('/', withAuth, async (req, res) =>{
+    // try{
+    //     const updatePost = await Post.
+    // }catch(error){
+    //     res.status(500).json(error);
+    // }
 })
 
 // option to delete a post by its id
@@ -37,7 +55,7 @@ router.delete('/:id', withAuth, async (req, res) =>{
             }
         });
 
-        is(!postData) {
+        if(!postData) {
             res.status(404).json({message: `No post found with this id!!`})
             return;
         }

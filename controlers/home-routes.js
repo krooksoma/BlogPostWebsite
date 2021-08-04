@@ -1,26 +1,24 @@
 // makes router available to use for queries to the db and output to front-end
 const router = require('express').Router();
 // require models from models folder to make queries
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 //route to get and render all posts in the homepage
 router.get('/', async (req, res) => {
     try{ 
         const displayAll = await Post.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['name']
-                }
-            ]
+            include: [User]
         });
 
+        
         const posts = displayAll.map((posts) => posts.get({ plain : true }));
         //checking for output
-        res.status(200).json(displayAll);
-
-        res.render(`homepage`, {
+        
+        // console.log("This is Display all" , displayAll);
+        // get sent to handlebars
+        // name of the view goes as first parameter. file type not required. MUST MATCH VIEW NAME
+        res.render(`home`, {
             posts, 
             logged_in: req.session.logged_in
         });
@@ -30,52 +28,23 @@ router.get('/', async (req, res) => {
     }
 })
 
-//route to enable user to click and access a specific post
 router.get('/post/:id', async (req, res) => {
     try{
-        const getById = await Post.findByPk(req.params.id, {
+        console.log("Inside the single post query");
+        const getPost = await Post.findByPk(req.params.id ,{
             include: [
-                {
-                    model: User, 
-                    attributes: ['name']
-                }
+                User
             ]
         });
-
-        const postDetail = projectData.get({ plain: true });
-
-        res.status(200).json(postDetail)
-
-        res.render('post', {
-            ...postDetail,
-            logged_in: req.session.logged_in
-        })
+        // const displayPost = getPost.map((post) => post.get({ plain: true}))
+        const displayPost = getPost.get({ plain : true });
+        console.log(displayPost);
+        res.render('post', displayPost);
 
     }catch(error){
         res.status(500).json(error)
     }
 })
-
-//
-router.get('/profile', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password']},
-            include: [{ model: Project }],
-        });
-        
-        const user = userData.get({ plain: true });
-
-        res.render('profile', {
-            ...user, 
-            logged_in: true
-        });
-
-    }catch(error){
-        res.status(500).json(error)
-    }
-})
-
 
 
 // enables the login option and refresh the page

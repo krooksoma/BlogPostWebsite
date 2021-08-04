@@ -1,0 +1,47 @@
+*{
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+html{
+  margin: 0;
+ 
+}
+
+h1{
+ font-size: 300%;
+ text-decoration: none;
+}
+
+
+h2{
+  font-size: 250%;
+}
+
+h3{
+  font-size: 200%;
+  border-bottom: 1px solid grey;
+}
+
+p{
+  font-size: 60%;
+  line-height: 120%;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  color: rgb(216, 58, 58);
+}
+
+.user-name{
+  font-size: 50%;
+  color: rgb(143, 143, 143);
+  text-align: end;
+}
+
+.card{
+  box-shadow: 10px 5px 5px rgb(99, 73, 73);
+}

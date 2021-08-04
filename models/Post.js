@@ -5,6 +5,11 @@ class Post extends Model {}
 
 Post.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+        },
         title:{
             type: DataTypes.STRING, 
             allowNull: false,
@@ -12,11 +17,20 @@ Post.init(
         body :{
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
     },
     {
     sequelize,
-    modelName: 'Post'
+    underscored: true,
+    modelName: 'post',
+    freezeTableName: true
     }
 )
 

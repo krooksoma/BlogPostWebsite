@@ -1,0 +1,16 @@
+<div class="card text-decoration-none m-2" style="width: 40rem;">
+  <div class="card-body">
+    <h3 class="card-title text-decoration-none">
+      {{title}}
+    </h3>
+    <p class="card-text user-name">Created by {{user.name}}
+      on
+      {{format_date createdAt}}</p>
+    <p class="card-text">
+      {{body}}
+    </p>
+    <label form="new-comment" class="form-label">Comment:</label>
+    <input type="comment" id="new-comment" class="form-control" />    
+  </div>
+
+</div>
