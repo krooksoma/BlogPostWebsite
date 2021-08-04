@@ -1,4 +1,4 @@
-const morgan = require('morgan');
+
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -25,7 +25,7 @@ const sess = {
     })
 };
 
-app.use(morgan('short'));
+
 app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
