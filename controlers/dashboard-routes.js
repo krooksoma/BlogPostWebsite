@@ -23,5 +23,17 @@ router.get('/', withAuth, async (req, res) => {
     }
 })
 
+router.post('./', withAuth, (req, res) =>{
+    try{
+        const newPost = await Post.create(req.body);
+
+        console.log(newPost);
+
+
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
+
 
 module.exports = router;
