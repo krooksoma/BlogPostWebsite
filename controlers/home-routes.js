@@ -30,15 +30,15 @@ router.get('/', async (req, res) => {
 
 router.get('/post/:id', async (req, res) => {
     try{
-        console.log("Inside the single post query");
+        // console.log("Inside the single post query");
         const getPost = await Post.findByPk(req.params.id ,{
-            include: [
-                User
-            ]
+            include: [User]
         });
         // const displayPost = getPost.map((post) => post.get({ plain: true}))
         const displayPost = getPost.get({ plain : true });
         console.log(displayPost);
+        // it does not work when I add logged in info
+        // I want to add the dashboard option on the nav bar
         res.render('post', displayPost);
 
     }catch(error){

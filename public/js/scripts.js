@@ -55,11 +55,5 @@ window.addEventListener('DOMContentLoaded', event => {
 
 const userPostCard = document.querySelector('.card');
 
-// userPostCard.addEventListener('click', async (id) =>{
-//     const response = await fetch('/api/post/:id', {
-//         method: 'GET',
-//         headers: { post: id },
-//         headers: { 'Content-Type': 'application/json' },
-//       });
-// });
+
 
