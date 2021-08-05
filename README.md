@@ -30,7 +30,7 @@
 
 ## Installation Instructions
     no installation necessary. Open the following link, signup and have fun:
-    https://boiling-gorge-34353.herokuapp.com/.
+! [deployed application](https://boiling-gorge-34353.herokuapp.com/)
 
 ## Usage info
     Use at you own discretion
