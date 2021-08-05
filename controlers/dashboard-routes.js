@@ -9,7 +9,7 @@ router.get('/', withAuth, async (req, res) => {
                 user_id: req.session.user_id
             },include:[User]
         });
-        console.log("Here is the Dashboard Data", userData);
+        
 
         const posts = userData.map((posts) => posts.get({ plain : true }));
         
@@ -22,19 +22,13 @@ router.get('/', withAuth, async (req, res) => {
         res.status(500).json(error)
     }
 })
-// finish implementing post route
-router.post('./', withAuth, async (req, res) =>{
-    try{
-        const newPost = await Post.create(req.body);
 
-        console.log(newPost);
-
-
-    }catch(err){
-        res.status(500).json(err)
-    }
+router.get('/new', withAuth, (req, res) =>{
+    res.render('newpost');
 })
 
-// start implementing delete route
+
+
+// start implementing delete route for post
 
 module.exports = router;

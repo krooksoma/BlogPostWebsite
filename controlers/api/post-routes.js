@@ -2,7 +2,8 @@ const router = require('express').Router();
 const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/:id', async (req, res) =>{
+router.get('/:id', withAuth, async (req, res) =>{
+    console.log("INSIDE QUERY TO FIND POST BY pk");
     try{
         const findPost = await Post.findByPk((req.params.id), {
             // include: [
@@ -12,9 +13,9 @@ router.get('/:id', async (req, res) =>{
             //     }
             // ]
         })
-        console.log("Find post by id query: ", findPost)
         res.render('post', {
-            findPost            
+            findPost,
+            logged_in: req.session.logged_in            
         });
     }catch(error){
         res.status(500).json(error);
@@ -24,6 +25,7 @@ router.get('/:id', async (req, res) =>{
 
 // option to create a new post
 router.post('/', withAuth, async (req, res) =>{
+    console.log(req.body);
     try{
         const newPost = await Post.create({
             ...req.body,

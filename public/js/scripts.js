@@ -1,59 +1,29 @@
-/*!
-* Start Bootstrap - Grayscale v7.0.2 (https://startbootstrap.com/theme/grayscale)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
+const newPostHandler = () =>{
+    // moving to a different location 
+    location.replace('/dashboard/new')
+}
 
-window.addEventListener('DOMContentLoaded', event => {
 
-    // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
+const deletePostFunction = async (event) => {
+    event.preventDefault();
+
+        const id = event.target.id;
+        const deletePost = await fetch(`/api/post/${id}`, {
+            method: 'DELETE'
+        })
+
+        if(deletePost.ok){
+            document.location.replace('/dashboard')
+        }else{
+            alert('Failed to Delete Post')
         }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink')
-        }
+    
+}
 
-    };
-
-    // Shrink the navbar 
-    navbarShrink();
-
-    // Shrink the navbar when page is scrolled
-    document.addEventListener('scroll', navbarShrink);
-
-    // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            offset: 74,
-        });
-    };
-
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
-    });
-
-});
-
-const userPostCard = document.querySelector('.card');
+document.getElementById('newpost').addEventListener('click', newPostHandler);
 
 
-
+console.log(document.querySelector('.delete-button'));
+document.querySelectorAll('.delete-button').forEach(item => {
+    item.addEventListener('click', (event) => deletePostFunction(event));
+})

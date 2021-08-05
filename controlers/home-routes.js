@@ -36,7 +36,7 @@ router.get('/post/:id', async (req, res) => {
         });
         // const displayPost = getPost.map((post) => post.get({ plain: true}))
         const displayPost = getPost.get({ plain : true });
-        console.log(displayPost);
+        
         // it does not work when I add logged in info
         // I want to add the dashboard option on the nav bar
         res.render('post', displayPost);
