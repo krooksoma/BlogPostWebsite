@@ -18,7 +18,7 @@
     
 ## Deployed application screenshot
 
-[Screenshot]()
+[Screenshot]('./public/assets/boiling-george-screenshot.png)
 
 ## Description
     A very cool tech blog developed from scratch where users can post about their thoughts 
