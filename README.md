@@ -21,14 +21,16 @@
 ![](public/assets/boiling-gorge-screenshot.png)
 
 ## Description
-    A very cool tech blog developed from scratch where users can post about their thoughts 
-    on tech related subjects and also comment on other users posts. The front-end used Css and javaScript languages. 
-    The back-end used Javascript and Node. On the server side NPM dependencies  used include Express, Sequelize, 
+    A very cool tech blog developed from scratch where users can post about
+    their thoughts on tech related subjects and also comment on other users posts.
+    The front-end used Css and javaScript languages.The back-end used Javascript
+    and Node. On the server side NPM dependencies  used include Express, Sequelize, 
     bcrypt, mysql2, and others. The database platform used was MySQL.
 
 
 ## Installation Instructions
-    no installation necessary. Open the following link, signup and have fun: https://boiling-gorge-34353.herokuapp.com/.
+    no installation necessary. Open the following link, signup and have fun:
+    https://boiling-gorge-34353.herokuapp.com/.
 
 ## Usage info
     Use at you own discretion
