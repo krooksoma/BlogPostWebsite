@@ -28,16 +28,16 @@
 
 
 ## Installation Instructions
-    no installarion necessary. Open the following link, signup and have fun: https://boiling-gorge-34353.herokuapp.com/.
+    no installation necessary. Open the following link, signup and have fun: https://boiling-gorge-34353.herokuapp.com/.
 
 ## Usage info
-    use at your own pleasure..
+    Use at you own discretion
 
 ## Contribution
     contribution is welcomed if requested.
 
 ## Test Instructions
-    undefined.    
+    testing is not implemented on this version of the application   
 
 ## License
     This project is covered under MIT license.
